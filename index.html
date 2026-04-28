@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="tr" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artisan's Eye | Bootstrap Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #11151d;
+      --bg-section: #161b24;
+      --bg-card: #1b212d;
+      --bg-muted: #49505c;
+      --border-color: #2b3240;
+      --text-main: #e6ebf3;
+      --text-soft: #b5becc;
+      --link-soft: #90b6ff;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.45;
+    }
+
+    .playfair {
+      font-family: "Playfair Display", Georgia, serif;
+    }
+
+    .site-wrap {
+      max-width: 1000px;
+    }
+
+    .top-nav {
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .top-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .top-nav a {
+      display: inline-block;
+      color: #d8ddeb;
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 0.8rem 1rem;
+    }
+
+    .top-nav a:hover {
+      color: #ffffff;
+    }
+
+    .featured-hero {
+      background: #303645;
+      border-radius: 0.25rem;
+      min-height: 260px;
+    }
+
+    .featured-hero .headline {
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      line-height: 1.04;
+      font-weight: 800;
+    }
+
+    .featured-card {
+      background: #111722;
+      border: 1px solid var(--border-color);
+      min-height: 190px;
+    }
+
+    .thumb-box {
+      background: #666c75;
+      color: #e8edf9;
+      min-height: 100%;
+      min-width: 108px;
+      font-size: 0.9rem;
+      display: grid;
+      place-items: center;
+    }
+
+    .thumb-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section-title {
+      font-style: italic;
+      font-size: 2rem;
+      margin-top: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .main-post-title {
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      line-height: 1.08;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+
+    .meta {
+      color: #8f98a8;
+      font-size: 0.93rem;
+    }
+
+    .meta a {
+      color: var(--link-soft);
+    }
+
+    .content-area hr,
+    .sidebar hr {
+      border-color: var(--border-color);
+      opacity: 1;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border: 1px solid #232b38;
+    }
+
+    .sidebar-sticky {
+      position: sticky;
+      top: 1.25rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .sidebar-sticky {
+        position: static;
+      }
+    }
+
+    .recent-post {
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.9rem;
+      margin-top: 0.9rem;
+    }
+
+    .recent-post .mini-thumb {
+      width: 72px;
+      height: 72px;
+      background: #7f7f7f;
+      flex: 0 0 72px;
+    }
+
+    .post-list-link {
+      color: #f3f5fa;
+      text-decoration: none;
+      font-weight: 700;
+      line-height: 1.25;
+      display: inline-block;
+      margin-bottom: 0.15rem;
+    }
+
+    .post-list-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .archives-list a,
+    .elsewhere-list a {
+      color: var(--link-soft);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+    }
+
+    .archives-list a:hover,
+    .elsewhere-list a:hover {
+      color: #bbd1ff;
+    }
+
+    pre {
+      background: #0d1118;
+      border: 1px solid var(--border-color);
+      border-radius: 0.3rem;
+      padding: 0.8rem 1rem;
+      color: #d8e1f2;
+      font-size: 0.86rem;
+    }
+
+    .post-image {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: 0.35rem;
+      border: 1px solid #596274;
+      display: block;
+    }
+
+    table td,
+    table th {
+      border-color: var(--border-color) !important;
+    }
+
+    .pager .btn {
+      border-radius: 50rem;
+      font-size: 0.9rem;
+      border-color: #345696;
+      color: #8fb0ec;
+    }
+
+    .pager .btn:hover {
+      background: #2e466f;
+      color: #d9e6ff;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      color: #a6afbd;
+      background: #2b3038;
+      font-size: 0.96rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container site-wrap py-3 py-md-4">
+    <header class="mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <a href="#" class="link-light text-decoration-none small">Abone ol</a>
+        <h1 class="playfair fw-bold fs-1 mb-0">Artisan's Eye</h1>
+        <div class="d-flex gap-3 align-items-center">
+          <a href="#" class="link-light text-decoration-none small">Ara</a>
+          <a href="#" class="btn btn-sm btn-outline-light rounded-pill px-3">Kayit ol</a>
+        </div>
+      </div>
+      <!-- Art categories navigation -->
+      <nav class="top-nav">
+        <a href="#">Contemporary</a>
+        <a href="#">Classical</a>
+        <a href="#">Photography</a>
+        <a href="#">Sculpture</a>
+        <a href="#">Digital Art</a>
+        <a href="#">Art History</a>
+        <a href="#">Reviews</a>
+        <a href="#">Exhibitions</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="featured-hero p-4 p-md-5 mb-4 d-flex align-items-center">
+        <div class="col-lg-7">
+          <h2 class="playfair fst-italic headline mb-3">Van Gogh'un Yildizli Gecesi: Deliligin mi, Yoksa Dehanin mi Bir Ifadesi?</h2>
+          <p class="mb-2 text-light-emphasis">Sanat tarihinin en ikonik eserlerinden biri olan Yildizli Gece, Van Gogh'un ic dunyasini donen firca darbeleri ve carpici renk kontrastlariyla yansitir. Bu incelemede tablonun psikolojik katmanlarini, donemin estetik anlayisiyla birlikte ele aliyoruz.</p>
+          <a class="link-light fw-bold" href="#">Okumaya devam et...</a>
+        </div>
+      </section>
+
+      <section class="row g-3 mb-4">
+        <div class="col-md-6">
+          <div class="featured-card d-flex overflow-hidden rounded">
+            <div class="p-3 flex-grow-1">
+              <p class="mb-1 text-info small fw-semibold">Contemporary</p>
+              <h3 class="playfair fw-bold mb-1">MOMA'da Yeni Cagdas Sanat Sergisi: "Sinirlari Asmak"</h3>
+              <div class="text-secondary small mb-2">Apr 21</div>
+              <p class="text-light-emphasis mb-3">New York'taki bu secki, dijital enstalasyonlardan performans sanatina uzanan cesitli islerle sanat algisinin bugunku sinirlarini tartismaya aciyor.</p>
+              <a href="#" class="text-primary text-decoration-none">Okumaya devam et</a>
+            </div>
+            <div class="thumb-box"><img src="images/nft-sanat-sergisi.png" alt="NFT sanat sergisi gorseli"></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="featured-card d-flex overflow-hidden rounded">
+            <div class="p-3 flex-grow-1">
+              <p class="mb-1 text-success small fw-semibold">Classical</p>
+              <h3 class="playfair fw-bold mb-1">Ronesansin Yeniden Kesfi: Sistine Sapeli'ndeki Gizli Detaylar</h3>
+              <div class="text-secondary small mb-2">Apr 19</div>
+              <p class="text-light-emphasis mb-3">Michelangelo'nun fresklerinde ilk bakista fark edilmeyen semboller, donemin teolojik ve politik gerilimlerine dair surpriz ipuclari sunuyor.</p>
+              <a href="#" class="text-primary text-decoration-none">Okumaya devam et</a>
+            </div>
+            <div class="thumb-box"><img src="images/michelangelo-detayi.png" alt="Michelangelo detayi gorseli"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row g-4">
+        <article class="col-lg-8 content-area">
+          <h2 class="playfair fw-bold section-title">Sanat Gundemi</h2>
+          <hr class="mt-2 mb-3">
+
+          <h3 class="playfair main-post-title">Digital Sanatin Yukselisi: AI Sanatci mi, Yoksa Arac mi?</h3>
+          <p class="meta mb-3">27 Nisan 2026, yazar: <a href="#">Elif Arman</a></p>
+          <p>Yapay zeka destekli uretim araclari, sanat dunyasinda yazarlik, ozgunluk ve emek kavramlarini yeniden tanimliyor. Bu yazi, AI ile uretilen eserlerin estetik degerini ve sanatcinin rolu uzerindeki etkisini elestirel bir cercevede tartisiyor.</p>
+          <hr>
+
+          <h4 class="playfair fw-bold mt-3">Alinti Metinler</h4>
+          <p>Asagida bir alinti metin ornegi gorebilirsiniz:</p>
+          <blockquote class="blockquote border-start border-3 ps-3">
+            <p class="mb-0">"Sanat, ruhun tozunu gunluk hayatin uzerinden siler." - Pablo Picasso</p>
+          </blockquote>
+
+          <h3 class="playfair main-post-title mt-5">Renk Paleti ve Duygular</h3>
+          <p>Derin lacivertler, parlak sari girdaplarla bulusarak gokyuzunde hareket hissi yaratir. Kontrast renk secimi, bir yandan huzur bir yandan da icsel gerilim duygusu uyandirir. Renkler, Van Gogh'un ruh halini dogrudan yansitan bir dil gibidir.</p>
+
+          <img src="images/yildizli-gece.png" alt="Yildizli Gece tablosu icin gorsel" class="post-image my-4">
+
+          <h4 class="playfair fw-bold mt-2">Firca Teknikleri</h4>
+          <p>Kivrimli ve ritmik firca darbeleri, tablonun en belirgin ozelliklerinden biridir. Boya katmanlarinin yogunlugu, yuzeyde neredeyse uc boyutlu bir doku hissi olusturur. Bu teknik, manzarayi fotografiga yakin bir gerceklikten uzaklastirip duygusal bir anlatima donusturur.</p>
+
+          <h4 class="playfair fw-bold mt-2">Sanatcinin Ruh Hali</h4>
+          <p>Eserin yapildigi donemde Van Gogh'un yasadigi zihinsel dalgalanmalar, tablonun titreyen enerjisinde hissedilir. Sessiz bir kasabanin ustundeki hareketli gokyuzu, ic huzur arayisi ile firtinali duygular arasindaki ince dengeyi yansitir.</p>
+
+          <div class="d-flex gap-2 pager py-3">
+            <button class="btn btn-outline-primary px-3" type="button">Daha eski</button>
+            <button class="btn btn-outline-secondary px-3 disabled" type="button">Daha yeni</button>
+          </div>
+        </article>
+
+        <aside class="col-lg-4 sidebar">
+          <div class="sidebar-sticky">
+            <div class="sidebar-card p-4 rounded mb-4">
+              <h4 class="playfair fst-italic fw-bold">Hakkinda</h4>
+              <p class="mb-0 text-light-emphasis">"Artisan's Eye", cagdas ve tarihi sanat uzerine elestirel analizler sunan bagimsiz bir platformdur. Amacimiz, sanati herkes icin erisilebilir ve dusundurucu kilmaktir. Katkida bulunmak icin bize ulasin.</p>
+            </div>
+
+            <h4 class="playfair fst-italic fw-bold">Son yazilar</h4>
+            <div class="recent-post d-flex gap-3">
+              <div class="mini-thumb"></div>
+              <div>
+                <a href="#" class="post-list-link">YZ Sanati ve Telif Hakkinin Gelecegi</a>
+                <div class="text-secondary small">15 Ocak 2024</div>
+              </div>
+            </div>
+            <div class="recent-post d-flex gap-3">
+              <div class="mini-thumb"></div>
+              <div>
+                <a href="#" class="post-list-link">MoMA'nin Yeni Kanadina Bir Tur</a>
+                <div class="text-secondary small">14 Ocak 2024</div>
+              </div>
+            </div>
+            <div class="recent-post d-flex gap-3 mb-4">
+              <div class="mini-thumb"></div>
+              <div>
+                <a href="#" class="post-list-link">Soyut Disavurumculugun Yeniden Kesfi</a>
+                <div class="text-secondary small">13 Ocak 2024</div>
+              </div>
+            </div>
+
+            <h4 class="playfair fst-italic fw-bold mt-4">Arsiv</h4>
+            <ul class="list-unstyled archives-list mb-4">
+              <li><a href="#">Mart 2021</a></li>
+              <li><a href="#">Subat 2021</a></li>
+              <li><a href="#">Ocak 2021</a></li>
+              <li><a href="#">Aralik 2020</a></li>
+              <li><a href="#">Kasim 2020</a></li>
+              <li><a href="#">Ekim 2020</a></li>
+              <li><a href="#">Eylul 2020</a></li>
+              <li><a href="#">Agustos 2020</a></li>
+              <li><a href="#">Temmuz 2020</a></li>
+              <li><a href="#">Haziran 2020</a></li>
+              <li><a href="#">Mayis 2020</a></li>
+              <li><a href="#">Nisan 2020</a></li>
+            </ul>
+
+            <h4 class="playfair fst-italic fw-bold">Diger platformlar</h4>
+            <ul class="list-unstyled elsewhere-list">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Sosyal</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <!-- Site footer -->
+  <footer class="py-4 text-center">
+    <p class="mb-1">Artisan's Eye &copy; 2026</p>
+    <a href="#" class="link-info">Yukari cik</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
